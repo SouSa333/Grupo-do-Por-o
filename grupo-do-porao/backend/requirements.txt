@@ -1,0 +1,37 @@
+# Dependências do Backend - Grupo do Porão
+# Sistema RPG desenvolvido em Python/Flask
+
+# Framework Web
+Flask==2.3.3
+Werkzeug==2.3.7
+
+# Banco de Dados
+SQLAlchemy==2.0.21
+Flask-SQLAlchemy==3.0.5
+
+# Autenticação e Segurança
+Flask-Login==0.6.3
+Flask-Session==0.5.0
+bcrypt==4.0.1
+
+# CORS para integração com frontend
+Flask-CORS==4.0.0
+
+# Validação de dados
+marshmallow==3.20.1
+Flask-Marshmallow==0.15.0
+
+# Utilitários
+python-dotenv==1.0.0
+click==8.1.7
+
+# Desenvolvimento e Debug
+Flask-DebugToolbar==0.13.1
+
+# Testes (opcional)
+pytest==7.4.2
+pytest-flask==1.2.0
+
+# Produção (opcional)
+gunicorn==21.2.0
+

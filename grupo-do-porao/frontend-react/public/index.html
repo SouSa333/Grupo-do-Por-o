@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG - Grupo do Porão</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel&display=swap">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#5d3a1a">
+    <meta name="description" content="Sistema completo de RPG para o Grupo do Porão - Gerencie personagens, role dados e organize suas aventuras">
+    <meta property="og:title" content="RPG Grupo do Porão">
+    <meta property="og:description" content="Sistema completo de RPG para o Grupo do Porão">
+    <meta property="og:image" content="assets/img/logo.png">
+    <meta property="og:type" content="website">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <main class="container">
+        <form class="login-form">
+            <div class="logo-container">
+                <img src="assets/img/logo.png" alt="Logo do Grupo do Porão" class="logo">
+                <h1 class="title">Grupo do Porão</h1>
+            </div>
+            <div class="welcome-container">
+                <h2 class="welcome-title">Seja Bem-Vindo, Aventureiro!</h2>
+                <p class="welcome-text">Escolha seu caminho...</p>
+            </div>
+            <div class="buttons-container">
+                <a href="logins/loginmestre.html" class="btn btn-mestre">
+                    <span class="icon">👑</span>
+                    <span class="text">Mestre</span>
+                </a>
+                <a href="logins/loginjogador.html" class="btn btn-jogador">
+                    <span class="icon">⚔️</span>
+                    <span class="text">Jogador</span>
+                </a>
+            </div>
+        </form>
+    </main>
+    <footer class="footer">
+        <p class="copyright">&copy; 2025 Grupo do Porão LTDA</p>
+        <p class="version">Versão 1.0</p>
+    </footer>
+    <script>
+        // Registrar Service Worker para PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('Service Worker registrado com sucesso:', registration.scope);
+                    })
+                    .catch(function(error) {
+                        console.log('Falha ao registrar Service Worker:', error);
+                    });
+            });
+        }
+        // Prompt de instalação PWA
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // Criar botão de instalação
+            const installBtn = document.createElement('button');
+            installBtn.textContent = '📱 Instalar App';
+            installBtn.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: #5d3a1a;
+                color: #d4af37;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-family: 'Cinzel', serif;
+                z-index: 1000;
+            `;
+            installBtn.addEventListener('click', () => {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('PWA instalada');
+                    }
+                    deferredPrompt = null;
+                    document.body.removeChild(installBtn);
+                });
+            });
+            document.body.appendChild(installBtn);
+        });
+    </script>
+</body>
+</html>

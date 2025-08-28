@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Mestre - Grupo do Porão</title>
+    <link rel="shortcut icon" href="../assets/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/painel_fixed.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="parchment-texture"></div>
+    <!-- Sidebar de Jogadores -->
+    <div class="sidebar-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-scroll"></i>
+    </div>
+    <div id="jogadores" class="sidebar">
+        <div class="sidebar-header">
+            <img src="../assets/img/logo.png" alt="Logo Grupo do Porão" class="sidebar-logo">
+            <h1>Jogadores</h1>
+            <hr class="divider">
+        </div>
+        <button id="btn-adicionar" class="btn-adicionar">
+            <i class="fas fa-user-plus"></i> Novo Jogador
+        </button>
+        <div id="lista-jogadores" class="lista-jogadores"></div>
+    </div>
+    <!-- Conteúdo Principal -->
+    <div id="principal">
+        <header class="main-header">
+            <h1><i class="fas fa-crown"></i> Painel do Mestre</h1>
+            <p class="subtitle">Controle sua aventura</p>
+            <div class="header-actions">
+                <button onclick="toggleTheme()" class="theme-toggle" title="Alternar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button onclick="window.location.href='../index.html'" class="logout-btn" title="Sair">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </header>
+        <!-- Seção de Dados -->
+        <section class="dice-section">
+            <h2><i class="fas fa-dice-d20"></i> Sistema de Dados</h2>
+            <div class="dice-controls">
+                <div class="dice-type">
+                    <label for="dice-sides">Tipo de Dado:</label>
+                    <select id="dice-sides">
+                        <option value="4">d4</option>
+                        <option value="6">d6</option>
+                        <option value="8">d8</option>
+                        <option value="10">d10</option>
+                        <option value="12">d12</option>
+                        <option value="20" selected>d20</option>
+                        <option value="100">d100</option>
+                    </select>
+                </div>
+                <div class="dice-count">
+                    <label for="dice-number">Quantidade:</label>
+                    <input type="number" id="dice-number" min="1" max="10" value="1">
+                </div>
+                <div class="dice-modifier">
+                    <label for="dice-mod">Modificador:</label>
+                    <input type="number" id="dice-mod" value="0">
+                </div>
+                <button onclick="rollDice()" class="roll-btn">
+                    <i class="fas fa-dice"></i> Rolar
+                </button>
+            </div>
+            <div id="dice-result" class="dice-result"></div>
+        </section>
+        <!-- Seção de Notas -->
+        <section class="notes-section">
+            <h2><i class="fas fa-scroll"></i> Notas da Sessão</h2>
+            <div class="notes-controls">
+                <button onclick="addNote()" class="add-note-btn">
+                    <i class="fas fa-plus"></i> Nova Nota
+                </button>
+                <button onclick="clearNotes()" class="clear-notes-btn">
+                    <i class="fas fa-trash"></i> Limpar Tudo
+                </button>
+            </div>
+            <div id="notes-container" class="notes-container"></div>
+        </section>
+        <!-- Seção de Ferramentas -->
+        <section class="tools-section">
+            <h2><i class="fas fa-tools"></i> Ferramentas do Mestre</h2>
+            <div class="tools-grid">
+                <button onclick="generateNPC()" class="tool-btn">
+                    <i class="fas fa-user-friends"></i>

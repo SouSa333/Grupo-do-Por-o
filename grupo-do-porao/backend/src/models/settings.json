@@ -1,0 +1,23 @@
+{
+  "app_name": "RPG Grupo do Porão",
+  "version": "1.0.0",
+  "theme": "dark",
+  "language": "pt-br",
+  "features": {
+    "dice_rolling": true,
+    "character_sheets": true,
+    "notes": true,
+    "chat": false
+  },
+  "dice_settings": {
+    "default_sides": 20,
+    "animation": true,
+    "sound": false
+  },
+  "ui_settings": {
+    "show_tooltips": true,
+    "auto_save": true,
+    "compact_mode": false
+  }
+}
+
